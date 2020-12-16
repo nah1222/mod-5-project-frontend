@@ -40,6 +40,18 @@ class App extends React.Component {
 
   };
 
+  deleteRoutine = routineId => {
+    fetch(`http://localhost:3000/routines/${routineId}`, {
+        method: 'DELETE'
+    })
+        .then(r => r.json())
+        .then(deletedRoutine => {
+            this.setState({
+                routineData: this.state.routineData.filter(routine => routine.id !== deletedRoutine.id)
+            })
+        })
+}
+
 
   render() {
     return (
@@ -49,6 +61,7 @@ class App extends React.Component {
           routineData={this.state.routineData}
           submitHandler={this.submitHandler}
           updateRoutineData={this.updateRoutineData}
+          deleteRoutine = {this.deleteRoutine}
         />
       </div>
     );

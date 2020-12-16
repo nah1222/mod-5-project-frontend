@@ -10,7 +10,7 @@ class Routine extends React.Component {
             reps: 0
         }
     }
-
+    //toggle function
     toggleEditMode = () => {
         this.setState((prevState) => ({ isEditModeOn: !prevState.isEditModeOn }))
     }
@@ -73,7 +73,7 @@ class Routine extends React.Component {
     }
 
     render() {
-        console.log(this.props.routine, 'routine data')
+        // console.log(this.props.routine, 'routine data')
         return (
             <div>
                 Routine: {this.props.routine.name}
@@ -115,6 +115,7 @@ class Routine extends React.Component {
                         (<button onClick={this.toggleEditMode}>
                             Stop Editing</button>)
                 }
+                <button onClick={() => this.props.deleteRoutine(this.props.routine.id)}>Delete Routine</button>
                 <hr />
             </div>
         )
