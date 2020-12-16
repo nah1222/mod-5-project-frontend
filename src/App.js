@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom'
+import RoutineContainer from './Containers/RoutineContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
 
+  state = {
+    routineData: [],
+    allWorkoutData: []
+  };
+
+  submitHandler = (newRoutine) => {
+    // this.setState({routineData:[...this.state.routineData, newRoutine] });
+    fetch("http://localhost:3000/routines", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify(newRoutine)
+    })
+      .then(r => r.json())
+      .then(data => this.setState({ routineData: [...this.state.routineData, data] }))
+      .catch(console.log)
+  }
+
+  updateRoutineData = (updatedRoutine) => {
+    this.setState({
+      routineData: this.state.routineData.map(routine => routine.id === updatedRoutine.id ? updatedRoutine : routine)
+    })
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3000/routines")
+      .then(resp => resp.json())
+      .then(data => this.setState({ routineData: data }))
+    fetch("http://localhost:3000/workouts")
+      .then(resp => resp.json())
+      .then(data => this.setState({ allWorkoutData: data }))
+
+  };
+
+
+  render() {
+    return (
+      <div>
+        <RoutineContainer
+          allWorkoutData={this.state.allWorkoutData}
+          routineData={this.state.routineData}
+          submitHandler={this.submitHandler}
+          updateRoutineData={this.updateRoutineData}
+        />
+      </div>
+    );
+  };
+};
 export default App;
