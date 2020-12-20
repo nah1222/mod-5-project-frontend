@@ -34,6 +34,7 @@ class Routine extends React.Component {
         return this.props.routine.workout_routine_objs.map(wroObj =>
             <Workout
                 isEditModeOn={this.state.isEditModeOn}
+                wroObj={wroObj}
                 key={wroObj.workout.id}
                 removeWorkoutFromRoutine={this.removeWorkoutFromRoutine}
                 workout={wroObj.workout}

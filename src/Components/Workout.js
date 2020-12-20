@@ -4,7 +4,7 @@ class Workout extends React.Component {
     render() {
         return (
             <ul>
-                <li>{this.props.workout.name}</li>
+                <li>{this.props.workout.name} reps: x{this.props.wroObj.reps}</li>
                 <ul>{this.props.workout.description}</ul>
                 {
                     this.props.isEditModeOn && (
