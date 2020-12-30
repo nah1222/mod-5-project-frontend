@@ -1,5 +1,6 @@
 import React from 'react';
 import Workout from '../Components/Workout'
+import {NavLink} from 'react-router-dom'
 
 class Routine extends React.Component {
 
@@ -77,8 +78,9 @@ class Routine extends React.Component {
         // console.log(this.props.routine, 'routine data')
         return (
             <div>
-                Routine: {this.props.routine.name}
-                <br />
+                <NavLink to={`/routine/${this.props.routine.id}`}>
+                <h3>{this.props.routine.name}</h3>
+                </NavLink>
                 difficulty: {this.props.routine.difficulty}
                 {this.renderWorkouts()}
                 {

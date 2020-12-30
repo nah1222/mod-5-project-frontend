@@ -18,8 +18,10 @@ class RoutineContainer extends React.Component {
 
     render() {
         return (
+            
             <div>
                 <CreateRoutineForm submitHandler={this.props.submitHandler}/>
+                
                 {this.renderRoutines()}
             </div>
         )
