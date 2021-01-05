@@ -4,6 +4,7 @@
 }
 
 div{
+    margin-left: 2em;
     font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -17,6 +18,11 @@ div{
     color: azure;
 }
 
+.frontPageImg{
+    height: 50%;
+    width: 50%;
+}
+
 .formOut{
     text-align: center;
 }
@@ -28,4 +34,27 @@ div{
     align-items: center;
     width: fit-content;
     margin: auto;
+}
+
+input{
+    margin-top: 6px;
+    min-width: 18em;
+    height: 37px;
+    padding: 0px 10px;
+    font-size: 16px;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
+
+}
+
+.submit{
+    background-color: black;
+    color: whitesmoke;
+}
+
+menu.navBar a {
+    color: white;
+    font-weight: bold;
 }

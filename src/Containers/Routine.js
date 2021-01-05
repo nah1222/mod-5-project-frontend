@@ -75,7 +75,7 @@ class Routine extends React.Component {
     }
 
     render() {
-        // console.log(this.props.routine, 'routine data')
+        console.log(this.props.routine, 'routine data')
         return (
             <div>
                 <NavLink to={`/routine/${this.props.routine.id}`}>

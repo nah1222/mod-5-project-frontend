@@ -1,27 +1,29 @@
-import React, {Component} from 'react';
-import {NavLink, Route} from  'react-router-dom';
-import {Menu} from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { NavLink, Route } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react'
 
 class NavBar extends React.Component {
-    render(){
-        return(
+    render() {
+        console.log(this.props.userData)
+        const loggedIn = this.props.userData.id
+        return (
             <div>
                 <menu className="navBar">
-                    <Menu.Item as={NavLink} to="/signup">
+                    {/* {!loggedIn && <Menu.Item as={NavLink} to="/signup">
                         Sign-Up
-                    </Menu.Item>
-                    <Menu.Item as={NavLink} to="/login">
+                    </Menu.Item>} */}
+                    {!loggedIn && <Menu.Item as={NavLink} to="/login">
                         Login
-                    </Menu.Item>
+                    </Menu.Item>}
                     <Menu.Item as={NavLink} to="/routines">
                         Home
                     </Menu.Item>
-                    <Menu.Item as={NavLink} to="/users/:id">
+                    {/* <Menu.Item as={NavLink} to="/users/:id">
                         User Page
-                    </Menu.Item>
-                    <Menu.Item as={NavLink} to="/logout">
+                    </Menu.Item> */}
+                    {loggedIn && <Menu.Item as={NavLink} to="/logout">
                         Logout
-                    </Menu.Item>
+                    </Menu.Item>}
                 </menu>
             </div>
         )
